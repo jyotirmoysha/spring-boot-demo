@@ -14,7 +14,8 @@ node{
     }
     stage('copy file to remote server'){
 		//sh 'sudo docker build -t jyotirmoydoc/testrepo:2.0.0 .'
-		
+
+		sh "cd /home/ec2-user"
 		sh "ssh -i /home/ec2-user/AWSKeyPairForDev ec2-user@172.31.21.119"
         sh "touch testDevOps"
         sh "ls -lstr"
