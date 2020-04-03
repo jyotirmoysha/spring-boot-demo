@@ -17,6 +17,7 @@ node{
 		
 		sh "ssh -i /home/ec2-user/AWSKeyPairForDev ec2-user@172.31.21.119"
         sh "touch testDevOps"
+        sh "ls -lstr"
 	}
 	 
 }
