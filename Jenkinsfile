@@ -22,7 +22,11 @@ node{
 	}
     stage('Move artefacts to remote'){
 
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'jenkins-deploy-serve', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls -lstr', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'jenkins-deploy-serve', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ls -lstr
+        cd /home/ec2-user/test/target
+        ls -lstr
+        java -jar /home/ec2-user/test/target/com.spring-boot.demo-0.0.1-SNAPSHOT.jar
+        ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
     }
 	 
 }
