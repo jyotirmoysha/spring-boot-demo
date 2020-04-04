@@ -19,12 +19,15 @@ node{
 		sh "ssh -i /home/ec2-user/AWSKeyPairForDev ec2-user@172.31.21.119"
         sh "touch testDevOps"
         sh "ls -lstr"
-	}
+        sh "cp SampleSript.sh target/"
+    
+    }
     stage('Move artefacts to remote'){
 
         sshPublisher(publishers: [sshPublisherDesc(configName: 'jenkins-deploy-serve', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ls -lstr
         cd /home/ec2-user/test/target
         ls -lstr
+        cp SampleSript.sh target/
         sh SampleSript.sh
         java -jar /home/ec2-user/test/target/com.spring-boot.demo-0.0.1-SNAPSHOT.jar & echo $! > ./pid.file &
         ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
