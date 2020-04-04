@@ -20,5 +20,9 @@ node{
         sh "touch testDevOps"
         sh "ls -lstr"
 	}
+    stage('Move artefacts to remote'){
+
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'jenkins-deploy-serve', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls -lstr', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ec2-user/test', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/home/ec2-user/Hello.txt')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+    }
 	 
 }
