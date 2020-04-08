@@ -22,7 +22,33 @@ node{
         sh "cp SampleSript.sh target/"
     
     }
+    stage('Build Docker image'){
+
+        /* This builds the actual image */
+
+        app = docker.build("jyotirmoydoc/sample-spring-boot")
+	    //sh 'sudo docker build -t jyotirmoydoc/sample-spring-boot:2.0.0 .'
+    }
+    stage('Test image') {
+        
+        app.inside {
+            echo "Tests passed"
+        }
+    }
+    stage('Push image') {
+        /* 
+			You would need to first register with DockerHub before you can push images to your account
+		*/
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-pwd2') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+            } 
+                echo "Trying to Push Docker Build to DockerHub"
+    }
     stage('Move artefacts to remote'){
+        /* Moving artefacts to deployment server ( Jar and Scripts), and execute remote commands
+        on remote serve configured on manage plugins -> configuration-> Publish Over SSH / Add Serve
+        */
 
         sshPublisher(publishers: [sshPublisherDesc(configName: 'jenkins-deploy-serve', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ls -lstr
         cd /home/ec2-user/test/target
