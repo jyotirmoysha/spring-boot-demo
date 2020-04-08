@@ -29,7 +29,7 @@ node{
         ls -lstr
         sh SampleSript.sh
                 
-        ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar,**/*.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+        ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar,**/*.sh', usePty: true)], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
     }
 	 
 }
