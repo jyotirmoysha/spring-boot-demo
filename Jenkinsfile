@@ -59,5 +59,23 @@ node{
         echo "Task Completed ......"                
         ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar,**/*.sh', usePty: true)], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
     }
+    stage('Validate Application'){
+
+        withEnv([
+    "ipaddrs=$FINAL_IP",
+    "appuri=http://$FINAL_IP:8080"
+    ]){
+    timeout(time: 15, unit: 'MINUTES') {
+        waitUntil {
+            try {         
+               sh "curl -s --head  --request GET $appuri/demo/hello | grep '200 OK'"
+               return true
+            } catch (Exception e) {
+               return false
+            }
+        }
+    }
+}
+    }
 	 
 }
