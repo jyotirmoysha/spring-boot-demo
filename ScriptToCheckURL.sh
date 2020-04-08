@@ -13,10 +13,10 @@ do
 
   if [ "$code" = "200" ]; then
     echo "Website $url is online."
+	echo "Congratulations.... YOUR APPLICATION IS UP AND RUNNING"
     break
   else
     echo "Website $url seems to be offline. Waiting $timeout seconds."
-	echo "Congratulations.... YOUR APPLICATION IS UP AND RUNNING"
-    sleep $timeout
+	sleep $timeout
   fi
 done
