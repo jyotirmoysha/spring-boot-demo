@@ -63,6 +63,8 @@ node{
 
         sh 'echo "Validating Application URL ....."'
         sh "ls -lstr"
+        sh "dos2unix ScriptToCheckURL.sh"
+        sh "sh ScriptToCheckURL.sh"
     }
     
 	 
