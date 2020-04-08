@@ -16,6 +16,7 @@ do
     break
   else
     echo "Website $url seems to be offline. Waiting $timeout seconds."
+	echo "Congratulations.... YOUR APPLICATION IS UP AND RUNNING"
     sleep $timeout
   fi
 done
