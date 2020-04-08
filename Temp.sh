@@ -1,9 +1,9 @@
 #!/bin/bash
-url='https://www.google1.com/'
+url='https://www.google.com/'
 attempts=5
 timeout=5
 
-echo "Checking status of URL:  $url ..............."
+echo "Checking status of $url."
 
 for (( i=1; i<=$attempts; i++ ))
 do
