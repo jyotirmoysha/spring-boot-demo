@@ -1,5 +1,5 @@
 #!/bin/bash
-url='https://www.google1.com/'
+url='http://18.220.83.189:8080/demo/hello'
 attempts=5
 timeout=5
 
