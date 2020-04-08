@@ -54,7 +54,9 @@ node{
         cd /home/ec2-user/test/target
         ls -lstr
         sh SampleSript.sh
-        sleep 10                
+        echo "Waiting For 10 Secs ....."
+        sleep 10
+        echo "Task Completed ......"                
         ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar,**/*.sh', usePty: true)], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
     }
 	 
