@@ -62,7 +62,7 @@ node{
     stage('Validate Application URL'){
 
         sh 'ech0 "Validating Application URL ....."'
-        sh "ls-lstr"
+        sh "ls -lstr"
     }
     
 	 
