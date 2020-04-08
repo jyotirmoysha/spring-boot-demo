@@ -12,10 +12,6 @@ node{
 		
         sh "${mvnCMD} clean package"
     }
-    stage('Build Image'){
-        /*This builds the actual image*/
-        
-    }
     stage('copy file to remote server'){
 		//sh 'sudo docker build -t jyotirmoydoc/testrepo:2.0.0 .'
 
