@@ -63,6 +63,7 @@ node{
 
         sh 'echo "Validating Application URL ....."'
         sh "ls -lstr"
+        /* Before running below command check dos2unix is installed or not else run  yum install dos2unix*/
         sh "dos2unix ScriptToCheckURL.sh"
         sh "sh ScriptToCheckURL.sh"
     }
