@@ -61,7 +61,7 @@ node{
     }
     stage('Validate Application URL'){
 
-        sh 'ech0 "Validating Application URL ....."'
+        sh 'echo "Validating Application URL ....."'
         sh "ls -lstr"
     }
     
